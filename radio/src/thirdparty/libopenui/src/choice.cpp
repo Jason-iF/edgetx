@@ -37,7 +37,7 @@ static const lv_obj_class_t choice_class = {
     .width_def = LV_SIZE_CONTENT,
     .height_def = EdgeTxStyles::UI_ELEMENT_HEIGHT,
     .editable = LV_OBJ_CLASS_EDITABLE_INHERIT,
-    .group_def = LV_OBJ_CLASS_GROUP_DEF_INHERIT,
+    .group_def = LV_OBJ_CLASS_GROUP_DEF_TRUE,
     .instance_size = sizeof(lv_obj_t),
 };
 
@@ -90,7 +90,8 @@ std::string Choice::getLabelText()
 
 void ChoiceBase::update()
 {
-  lv_label_set_text(label, getLabelText().c_str());
+  if (!deleted())
+    lv_label_set_text(label, getLabelText().c_str());
 }
 
 Choice::Choice(Window* parent, const rect_t& rect, int vmin, int vmax,
