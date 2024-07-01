@@ -194,6 +194,11 @@ def main():
         cmake_options["PCBREV"] = "COMMANDO14"
         firmware_options = options_iflight_commando14
         maxsize = 2 * 1024 * 1024
+    elif board_name == "f16":
+        cmake_options["PCB"] = "X10"
+        cmake_options["PCBREV"] = "F16"
+        firmware_options = options_fatfish_f16
+        maxsize = 2 * 1024 * 1024
     else:
         return INVALID_BOARD
 

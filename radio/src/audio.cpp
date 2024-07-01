@@ -448,7 +448,8 @@ void audioTask(void * pdata)
 
   setSampleRate(AUDIO_SAMPLE_RATE);
 
-#if defined(PCBX12S) || defined(RADIO_TX16S) || defined(RADIO_COMMANDO14)
+
+#if defined(PCBX12S) || defined(RADIO_TX16S) || defined(RADIO_F16) || defined(RADIO_COMMANDO14)
   // The audio amp needs ~2s to start
   RTOS_WAIT_MS(1000); // 1s
 #endif

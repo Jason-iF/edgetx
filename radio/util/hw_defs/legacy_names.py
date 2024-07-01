@@ -2,7 +2,7 @@
 
 LEGACY_NAMES = [
     {
-        "targets": {"x10", "x10express", "t16", "tx16s", "t18", "commando14"},
+        "targets": {"x10", "x10express", "t16", "tx16s", "t18", "f16","commando14"},
         "inputs": {
             "LH": {
                 "yaml": "Rud",
