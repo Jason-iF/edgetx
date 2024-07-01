@@ -117,6 +117,9 @@ case $RADIO_TYPE in
     commando8)
         BUILD_OPTIONS+=" -DPCB=X7 -DPCBREV=COMMANDO8"
         ;;
+    commando14)
+        BUILD_OPTIONS+=" -DPCB=X10 -DPCBREV=COMMANDO14"
+        ;;
     *)
         echo "Unknown target: $RADIO_TYPE"
         exit 1

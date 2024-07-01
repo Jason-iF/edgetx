@@ -46,6 +46,10 @@
   #define USB_NAME                     "FrSky X10"
   #define USB_MANUFACTURER             'F', 'r', 'S', 'k', 'y', ' ', ' ', ' '  /* 8 bytes */
   #define USB_PRODUCT                  'X', '1', '0', ' ', ' ', ' ', ' ', ' '  /* 8 Bytes */
+#elif defined(RADIO_COMMANDO14)
+  #define USB_NAME                     "IFlight COMMANDO14"
+  #define USB_MANUFACTURER             'I', 'F', 'L', 'I', 'G', 'H', 'T', ' '  /* 8 bytes */
+  #define USB_PRODUCT                  'C', '1', '4', ' ', ' ', ' ', ' ', ' '  /* 8 Bytes */
 #endif
 
 #endif // _USB_DESCRIPTOR_H_

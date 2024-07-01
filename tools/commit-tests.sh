@@ -169,6 +169,9 @@ do
         commando8)
             BUILD_OPTIONS+="-DPCB=X7 -DPCBREV=COMMANDO8"
             ;;
+        commando14)
+            BUILD_OPTIONS+="-DPCB=X10 -DPCBREV=COMMANDO14"
+            ;;
     esac
 
     cmake ${BUILD_OPTIONS} "${SRCDIR}"

@@ -209,6 +209,9 @@ do
         commando8)
             BUILD_OPTIONS+="-DPCB=X7 -DPCBREV=COMMANDO8"
             ;;
+        commando14)
+            BUILD_OPTIONS+="-DPCB=X10 -DPCBREV=COMMANDO14"
+            ;;
         *)
             echo "Unknown target: $target_name"
             exit 1

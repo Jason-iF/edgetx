@@ -8,7 +8,7 @@ if [[ -n ${GCC_ARM} ]] ; then
   export PATH=${GCC_ARM}:$PATH
 fi
 
-: ${FLAVOR:="t15;tx16s;x12s;nv14;pl18;x9d;x9dp;x9e;xlites;x7;tpro;t20"}
+: ${FLAVOR:="t15;tx16s;x12s;nv14;pl18;x9d;x9dp;x9e;xlites;x7;tpro;t20;commando14"}
 : ${SRCDIR:=$(dirname "$(pwd)/$0")/..}
 
 : ${COMMON_OPTIONS:="-DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_RULE_MESSAGES=OFF -Wno-dev -DDISABLE_COMPANION=YES -DCMAKE_MESSAGE_LOG_LEVEL=WARNING"}
@@ -127,6 +127,9 @@ do
             ;;
         commando8)
             BUILD_OPTIONS+="-DPCB=X7 -DPCBREV=COMMANDO8"
+            ;;
+        commando14)
+            BUILD_OPTIONS+="-DPCB=X10 -DPCBREV=COMMANDO14 -DINTERNAL_GPS=ON"
             ;;
     esac
 
