@@ -121,6 +121,7 @@
 #define TR_SF_DISABLE_TOUCH            "Ikke berøringsaktiv"
 #define TR_SF_DISABLE_AUDIO_AMP        TR("Sluk audio amp", "Sluk audio amplifier")
 #define TR_SF_SET_SCREEN               "Vælg hoved skærm"
+#define TR_SF_LCD_TO_VIDEO             "LCD to Video"
 
 #define TR_FSW_RESET_TELEM             TR("Telm", "Telemetri")
 #define TR_FSW_RESET_TIMERS            "Tid1","Tid2","Tid3"
@@ -1022,7 +1023,7 @@
   #define TR_WIDGET_VALUE              "Værdi"
 #endif
 
-// Bootloader common - Ascii only
+// Bootloader common - ASCII characters only
 #define TR_BL_USB_CONNECTED           "USB forbundet"
 #define TR_BL_USB_PLUGIN              "eller brug USB kabel"
 #define TR_BL_USB_MASS_STORE          "for USB disk"
@@ -1052,19 +1053,23 @@
 #endif
 
 #if defined(PCBTARANIS)
-   // Bootloader Taranis specific - Ascii only
+   // Bootloader Taranis specific - ASCII characters only
   #define TR_BL_RESTORE_EEPROM        "Genskab EEPROM"
   #if defined(RADIO_COMMANDO8)
     #define TR_BL_POWER_KEY           "Tryk power knap."
     #define TR_BL_FLASH_EXIT          "Forlad installation tilstand."
   #endif
 #elif defined(PCBHORUS)
-   // Bootloader Horus specific - Ascii only
+   // Bootloader Horus specific - ASCII characters only
+  #define TR_BL_ERASE_INT_FLASH       "Erase Internal Flash Storage"
+  #define TR_BL_ERASE_FLASH           "Erase Flash Storage"
+  #define TR_BL_ERASE_FLASH_MSG       "This may take up to 200s"
   #define TR_BL_SELECT_KEY            "[ENT] for at bruge fil"
   #define TR_BL_FLASH_KEY             "[ENT] længe, for at starte"
+  #define TR_BL_ERASE_KEY             "Hold [ENT] long to erase"
   #define TR_BL_EXIT_KEY              "[RTN] for at forlade"
 #elif defined(PCBNV14)
-   // Bootloader NV14 specific - Ascii only
+   // Bootloader NV14 specific - ASCII characters only
   #define TR_BL_RF_USB_ACCESS         "RF USB adgang"
   #define TR_BL_CURRENT_FW            "Firmware version:"
   #define TR_BL_SELECT_KEY            "[R TRIM] for at bruge fil"
@@ -1073,7 +1078,7 @@
   #define TR_BL_ENABLE                "Aktiver"
   #define TR_BL_DISABLE               "Deaktiver"
 #elif defined(PCBPL18)
-   // Bootloader PL18 specific - Ascii only
+   // Bootloader PL18 specific - ASCII characters only
   #define TR_BL_RF_USB_ACCESS         "RF USB adgang"
   #define TR_BL_ERASE_INT_FLASH       "Slet intern flash lager"
   #define TR_BL_ERASE_FLASH           "Slet flash lager"
