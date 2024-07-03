@@ -61,21 +61,6 @@
   #define KEYS_GPIO_PIN_SYS             LL_GPIO_PIN_7  // PI.07
   #define KEYS_GPIO_REG_TELE            GPIOI
   #define KEYS_GPIO_PIN_TELE            LL_GPIO_PIN_5  // PI.05
-#elif defined(RADIO_COMMANDO14)
-  #define KEYS_GPIO_REG_ENTER           GPIOI
-  #define KEYS_GPIO_PIN_ENTER           LL_GPIO_PIN_8  // PI.08
-  #define KEYS_GPIO_REG_PAGEUP          GPIOC
-  #define KEYS_GPIO_PIN_PAGEUP          LL_GPIO_PIN_13 // PC.13
-  #define KEYS_GPIO_REG_PAGEDN          GPIOI
-  #define KEYS_GPIO_PIN_PAGEDN          LL_GPIO_PIN_11 // PI.11
-  #define KEYS_GPIO_REG_MDL             GPIOI
-  #define KEYS_GPIO_PIN_MDL             LL_GPIO_PIN_6  // PI.06
-  #define KEYS_GPIO_REG_EXIT            GPIOI
-  #define KEYS_GPIO_PIN_EXIT            LL_GPIO_PIN_4  // PI.04
-  #define KEYS_GPIO_REG_SYS             GPIOI
-  #define KEYS_GPIO_PIN_SYS             LL_GPIO_PIN_7  // PI.07
-  #define KEYS_GPIO_REG_TELE            GPIOI
-  #define KEYS_GPIO_PIN_TELE            LL_GPIO_PIN_5  // PI.05
 #elif defined(RADIO_T15)
   #define KEYS_GPIO_REG_ENTER           GPIOI
   #define KEYS_GPIO_PIN_ENTER           LL_GPIO_PIN_8  // PI.08
@@ -330,11 +315,6 @@
     #define TRIMS_GPIO_PIN_LHL            LL_GPIO_PIN_6  // PA.06
     #define TRIMS_GPIO_REG_LHR            GPIOC
     #define TRIMS_GPIO_PIN_LHR            LL_GPIO_PIN_4  // PC.04
-  #elif defined(RADIO_COMMANDO14)
-    #define TRIMS_GPIO_REG_LHL            GPIOA
-    #define TRIMS_GPIO_PIN_LHL            LL_GPIO_PIN_6  // PA.06
-    #define TRIMS_GPIO_REG_LHR            GPIOC
-    #define TRIMS_GPIO_PIN_LHR            LL_GPIO_PIN_4  // PC.04
   #else
     #define TRIMS_GPIO_REG_LHL            GPIOB
     #define TRIMS_GPIO_PIN_LHL            LL_GPIO_PIN_8  // PB.08
@@ -443,7 +423,7 @@
   #define ADC_GPIO_PIN_EXT3             ADC_GPIO_PIN_STICK_RH
   #define ADC_GPIO_PIN_EXT4             ADC_GPIO_PIN_STICK_RV
 #endif
-  #if !(defined(RADIO_TX16S) || defined(RADIO_F16)) && !defined(RADIO_T15) && !defined(RADIO_COMMANDO14)
+  #if !(defined(RADIO_TX16S) || defined(RADIO_F16)) && !defined(RADIO_T15)
     #define PWM_STICKS
     #define PWM_TIMER                   TIM5
     #define PWM_GPIO                    GPIOA
@@ -501,7 +481,7 @@
   #define ADC_DMA_STREAM_IRQHandler     DMA2_Stream0_IRQHandler
 
   // VBat divider is /4 on F42x and F43x devices
-  #if defined(RADIO_TX16S) || defined(RADIO_T15) || defined(RADIO_F16) || defined(RADIO_COMMANDO14)
+  #if defined(RADIO_TX16S) || defined(RADIO_T15) || defined(RADIO_F16)
     #define ADC_VREF_PREC2              660
   #elif defined(RADIO_T16) || defined(RADIO_T18)
     #define ADC_VREF_PREC2              600
@@ -517,8 +497,6 @@
 #elif defined(RADIO_T18)
   #define ADC_DIRECTION                 {1,-1,1,-1, -1,1,-1,  -1,1,1,1,  -1,1 }
 #elif defined(RADIO_TX16S) || defined(RADIO_F16)
-  #define ADC_DIRECTION                 {1,-1,1,-1,  1,1,1,   -1,1,1,1,  -1,1 }
-#elif defined(RADIO_COMMANDO14)
   #define ADC_DIRECTION                 {1,-1,1,-1,  1,1,1,   -1,1,1,1,  -1,1 }
 #elif defined(PCBX10)
   #define ADC_DIRECTION                 {1,-1,1,-1,  -1,1,-1,  1,-1,1,1,   1,-1 }
@@ -608,7 +586,7 @@
   #define AUX_SERIAL_DMA_RX                   DMA1
   #define AUX_SERIAL_DMA_RX_STREAM            LL_DMA_STREAM_1
   #define AUX_SERIAL_DMA_RX_CHANNEL           LL_DMA_CHANNEL_4
-  #if defined(RADIO_TX16S) || defined(RADIO_F16) || defined(RADIO_COMMANDO14)
+  #if defined(RADIO_TX16S) || defined(RADIO_F16)
     #define AUX_SERIAL_PWR_GPIO               GPIO_PIN(GPIOA, 15) // PA.15
   #endif
 #endif
@@ -748,7 +726,10 @@
 #define SD_SDIO_CLK_DIV(fq)               ((48000000 / (fq)) - 2)
 #define SD_SDIO_INIT_CLK_DIV              SD_SDIO_CLK_DIV(400000)
 #define SD_SDIO_TRANSFER_CLK_DIV          SD_SDIO_CLK_DIV(24000000)
-#define STORAGE_USE_SDIO
+
+// Uncomment only one line below to select which storage to use
+#define STORAGE_USE_SDIO      // Use SD card for storage with SDIO driver
+//#define STORAGE_USE_SPI_FLASH // Use SPI flash for storage instead of SD card
 
 // SPI NOR Flash 
 #if defined(PCBX12S) && PCBREV >= 13
@@ -837,8 +818,6 @@
 #if defined(RADIO_FAMILY_T16)
 #if defined(RADIO_TX16S)  || defined(RADIO_F16)
   #define AUDIO_UNMUTE_DELAY            150  // ms
-#elif defined(RADIO_COMMANDO14)
-  #define AUDIO_UNMUTE_DELAY            150  // ms
 #else
   #define AUDIO_UNMUTE_DELAY            120  // ms
 #endif
@@ -871,7 +850,7 @@
 #endif // HARDWARE_TOUCH
 
 // First I2C Bus
-#if defined(RADIO_TX16S) || defined(RADIO_F16) || defined(PCBX12S) || defined(RADIO_T15) || defined(RADIO_COMMANDO14)
+#if defined(RADIO_TX16S) || defined(RADIO_F16) || defined(PCBX12S) || defined(RADIO_T15)
   #define I2C_B1                          I2C1
   #define I2C_B1_GPIO                     GPIOB
   #define I2C_B1_SCL_GPIO_PIN             LL_GPIO_PIN_8  // PB.08
@@ -892,7 +871,7 @@
   #define I2C_B2_SCL_GPIO_PIN             LL_GPIO_PIN_10  // PB.10
   #define I2C_B2_SDA_GPIO_PIN             LL_GPIO_PIN_11  // PB.11
   #define I2C_B2_GPIO_AF                  LL_GPIO_AF_4    // I2C2
- #if defined(RADIO_TX16S) || defined(RADIO_F16) || defined(RADIO_COMMANDO14)
+ #if defined(RADIO_TX16S) || defined(RADIO_F16)
    #define I2C_B2_PWR_GPIO                GPIOA
    #define I2C_B2_PWR_GPIO_PIN            LL_GPIO_PIN_15  // PA.15
  #endif
